@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".SelectSourceActivity">
+
+    <!-- Header -->
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Select Source"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Gallery Option -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_project_card"
+                android:backgroundTint="#FFFFFF"
+                android:padding="24dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_gallery"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_icon_circle_aesthetic"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_gallery_purple"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_gallery_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Gallery"
+                    android:textColor="#1F2937"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/iv_gallery"
+                    app:layout_constraintTop_toTopOf="@+id/iv_gallery"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_gallery_desc"
+                    app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                    android:id="@+id/tv_gallery_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Choose from your device"
+                    android:textColor="#6B7280"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/iv_gallery"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_gallery_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_gallery"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Camera Option -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_project_card"
+                android:backgroundTint="#FFFFFF"
+                android:padding="24dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_camera"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_icon_circle_aesthetic"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_camera_purple"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_camera_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Camera"
+                    android:textColor="#1F2937"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/iv_camera"
+                    app:layout_constraintTop_toTopOf="@+id/iv_camera"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_camera_desc"
+                    app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                    android:id="@+id/tv_camera_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Record a new video"
+                    android:textColor="#6B7280"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/iv_camera"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_camera_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_camera"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Drive Option -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_drive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_project_card"
+                android:backgroundTint="#FFFFFF"
+                android:padding="24dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_drive"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_icon_circle_aesthetic"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_drive_purple"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_drive_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Google Drive"
+                    android:textColor="#1F2937"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/iv_drive"
+                    app:layout_constraintTop_toTopOf="@+id/iv_drive"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_drive_desc"
+                    app:layout_constraintVertical_chainStyle="packed"/>
+
+                <TextView
+                    android:id="@+id/tv_drive_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Import from cloud"
+                    android:textColor="#6B7280"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/iv_drive"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_drive_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_drive"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

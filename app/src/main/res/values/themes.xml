@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AIDUB" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/peony</item>
+        <item name="colorPrimaryVariant">@color/peony_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/pool</item>
+        <item name="colorSecondaryVariant">@color/pool_dark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/peony_dark</item>
+    </style>
+
+    <style name="Theme.AIDUB" parent="Base.Theme.AIDUB" />
+</resources>

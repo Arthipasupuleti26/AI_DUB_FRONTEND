@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".SendFeedbackActivity">
+
+    <!-- Header -->
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Send Feedback"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tell us what you think! Your feedback helps us improve."
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="24dp"/>
+
+            <EditText
+                android:id="@+id/et_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/bg_project_card"
+                android:backgroundTint="#FFFFFF"
+                android:padding="16dp"
+                android:hint="Type your feedback here..."
+                android:gravity="top|start"
+                android:inputType="textMultiLine"/>
+
+            <Button
+                android:id="@+id/btn_submit_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit Feedback"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/peony"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="24dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

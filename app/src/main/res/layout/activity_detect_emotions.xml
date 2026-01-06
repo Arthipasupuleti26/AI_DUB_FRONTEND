@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".DetectEmotionsActivity">
+
+    <!-- Header Title -->
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Detecting Emotions"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Analyzing vocal tones for natural dubbing"
+        android:textColor="#D1D5DB"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header" />
+
+    <!-- Main Visual Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/visual_container"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subtitle">
+
+        <!-- Central Circle -->
+        <View
+            android:id="@+id/circle_bg"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_circle_light_purple"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Bolt Icon -->
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_feature_bolt"
+            app:tint="@color/peony"
+            app:layout_constraintBottom_toBottomOf="@+id/circle_bg"
+            app:layout_constraintEnd_toEndOf="@+id/circle_bg"
+            app:layout_constraintStart_toStartOf="@+id/circle_bg"
+            app:layout_constraintTop_toTopOf="@+id/circle_bg" />
+
+        <!-- Happy Tag (Top Right) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_ready"
+            android:backgroundTint="#FFFFFF"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/circle_bg"
+            app:layout_constraintEnd_toEndOf="@+id/circle_bg"
+            app:layout_constraintTop_toTopOf="@+id/circle_bg"
+            android:translationY="20dp"
+            android:elevation="4dp">
+            
+            <!-- Using check circle temporarily as smile icon could be missing, applying green tint -->
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_check_circle"
+                app:tint="#22C55E"
+                android:layout_marginEnd="6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Happy 80%"
+                android:textColor="#22C55E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Calm Tag (Bottom Left) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_ready"
+            android:backgroundTint="#FFFFFF"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/circle_bg"
+            app:layout_constraintStart_toStartOf="@+id/circle_bg"
+            app:layout_constraintTop_toBottomOf="@+id/circle_bg"
+            android:translationY="-20dp"
+            android:elevation="4dp">
+            
+             <!-- Using check circle temporarily, applying blue tint -->
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_info" 
+                app:tint="#3B82F6"
+                android:layout_marginEnd="6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calm 20%"
+                android:textColor="#3B82F6"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Status Text -->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Mapping emotional cues..."
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/progress_container"
+        app:layout_constraintTop_toBottomOf="@+id/visual_container" />
+        
+    <!-- Percentage -->
+    <TextView
+        android:id="@+id/tv_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="85 %"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_status"
+        app:layout_constraintEnd_toEndOf="@+id/progress_container" />
+
+    <!-- Progress Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status">
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:max="100"
+            android:progress="85"
+            android:progressTint="@color/peony"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Next Button (Initially Hidden) -->
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/peony"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

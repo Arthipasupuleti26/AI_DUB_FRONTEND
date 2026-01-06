@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#F06292</color>
+    <color name="purple_500">#E91E63</color>
+    <color name="purple_700">#C2185B</color>
+    <color name="teal_200">#81D4FA</color>
+    <color name="teal_700">#0288D1</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="splash_background">#78909C</color>
+    
+    <!-- New Theme Colors -->
+    <color name="peony">#F06292</color>
+    <color name="peony_dark">#E91E63</color>
+    <color name="pool">#81D4FA</color>
+    <color name="pool_dark">#4FC3F7</color>
+    <color name="splash_title">#000000</color>
+    <color name="splash_subtitle">#212121</color>
+    <color name="onboarding_background">#78909C</color>
+    <color name="onboarding_title">#1F2937</color>
+    <color name="onboarding_subtitle">#000000</color>
+    <color name="button_gradient_start">#D61E86</color>
+    <color name="button_gradient_end">#D61E86</color>
+    <color name="illustration_rim">#E9D5FF</color>
+    <color name="icon_pink_bg">#FCE7F3</color>
+    <color name="icon_blue_bg">#DBEAFE</color>
+    <color name="icon_text_pink">#BE185D</color>
+    <color name="icon_text_blue">#1D4ED8</color>
+    <color name="feature_voice_bg">#DBEAFE</color>
+    <color name="feature_lip_sync_bg">#FCE7F3</color>
+    <color name="feature_translate_bg">#DCFCE7</color>
+    <color name="feature_fast_bg">#FEF3C7</color>
+    <color name="feature_voice_icon">#1D4ED8</color>
+    <color name="feature_lip_sync_icon">#BE185D</color>
+    <color name="feature_translate_icon">#15803D</color>
+    <color name="feature_fast_icon">#B45309</color>
+    <color name="button_continue">#D61E86</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="button_login_purple">@color/peony</color>
+</resources>

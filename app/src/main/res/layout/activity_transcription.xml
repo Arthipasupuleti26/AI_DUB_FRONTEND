@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".TranscriptionActivity">
+
+    <!-- Header Title -->
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Transcribing Telugu"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Transcription Preview Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_preview"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tv_status"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header"
+        app:layout_constraintVertical_bias="0.4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:id="@+id/scroll_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="24dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/text_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="నమస్కారం అండి, ఈ రోజు మనం..."
+                        android:textColor="#1F2937"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                     <TextView
+                        android:id="@+id/tv_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="టెక్నాలజీ గురించి మాట్లాడుకుందాం."
+                        android:textColor="#1F2937"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_line3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ఇది చాలా ముఖ్యమైన విషయం..."
+                        android:textColor="#1F2937"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+                    
+                    <!-- Fading space at bottom -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <!-- Gradient Fade Overlay at Bottom -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_fade_gradient_white" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Status Text -->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Converting speech to text..."
+        android:textColor="#D1D5DB"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/progress_container"
+        app:layout_constraintStart_toStartOf="@+id/progress_container" />
+
+    <!-- Progress Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintTop_toBottomOf="@+id/card_preview"
+        android:layout_marginBottom="32dp">
+
+        <!-- Percentage -->
+        <TextView
+            android:id="@+id/tv_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="0%"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/peony"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Next Button (Initially Hidden) -->
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/peony"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

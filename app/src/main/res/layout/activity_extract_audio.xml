@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".ExtractAudioActivity">
+
+    <!-- Header Title -->
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Extracting Audio"
+        android:textColor="#1F2937"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Waveform Animation Container -->
+    <LinearLayout
+        android:id="@+id/waveform_container"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tv_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header">
+
+        <!-- Waveform bars - will be animated -->
+        <View
+            android:id="@+id/bar1"
+            android:layout_width="8dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar2"
+            android:layout_width="8dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar3"
+            android:layout_width="8dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar4"
+            android:layout_width="8dp"
+            android:layout_height="90dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar5"
+            android:layout_width="8dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar_dark" />
+
+        <View
+            android:id="@+id/bar6"
+            android:layout_width="8dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar_dark" />
+
+        <View
+            android:id="@+id/bar7"
+            android:layout_width="8dp"
+            android:layout_height="90dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar8"
+            android:layout_width="8dp"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar9"
+            android:layout_width="8dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+        <View
+            android:id="@+id/bar10"
+            android:layout_width="8dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/bg_waveform_bar" />
+
+    </LinearLayout>
+
+    <!-- Status Text -->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Separating vocal tracks..."
+        android:textColor="#6B7280"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/progress_container"
+        app:layout_constraintStart_toStartOf="@+id/progress_container" />
+
+    <!-- Progress Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waveform_container">
+
+        <!-- Percentage -->
+        <TextView
+            android:id="@+id/tv_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="0%"
+            android:textColor="#374151"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/peony"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Next Button (Initially Hidden) -->
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/peony"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

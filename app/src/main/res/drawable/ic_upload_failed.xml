@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Light Red Background Circle -->
+    <path
+        android:fillColor="#FEE2E2"
+        android:pathData="M60,60m-60,0a60,60 0,1 1,120 0a60,60 0,1 1,-120 0"/>
+    
+    <!-- Warning Triangle -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#DC2626"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M60,36 L84,80 H36 Z"/>
+        
+    <!-- Exclamation Mark -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#DC2626"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M60,50 V64 M60,72 V72.5"/> <!-- Little dot at bottom -->
+</vector>

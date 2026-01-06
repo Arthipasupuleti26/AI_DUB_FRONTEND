@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".EmotionIntensityActivity">
+
+    <!-- Header -->
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Emotion Intensity"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Fine-tune the emotional weight of the AI voice."
+        android:textColor="#6B7280"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subtitle">
+
+        <!-- Happiness -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Happiness"
+                android:textColor="#1F2937"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/tv_val_happiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70"
+                android:textColor="@color/peony"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"/>
+
+            <SeekBar
+                android:id="@+id/seek_happiness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:max="100"
+                android:progress="70"
+                android:progressTint="@color/peony"
+                android:thumbTint="@color/peony"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Neutral"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_below="@+id/seek_happiness"
+                android:layout_alignParentStart="true"/>
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joyful"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_below="@+id/seek_happiness"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <!-- Excitement -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Excitement"
+                android:textColor="#1F2937"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/tv_val_excitement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:textColor="@color/peony"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"/>
+
+            <SeekBar
+                android:id="@+id/seek_excitement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:max="100"
+                android:progress="40"
+                android:progressTint="@color/peony"
+                android:thumbTint="@color/peony"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calm"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_below="@+id/seek_excitement"
+                android:layout_alignParentStart="true"/>
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hype"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_below="@+id/seek_excitement"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <!-- Sadness -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sadness"
+                android:textColor="#1F2937"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/tv_val_sadness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/peony"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"/>
+
+            <SeekBar
+                android:id="@+id/seek_sadness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:max="100"
+                android:progress="10"
+                android:progressTint="@color/peony"
+                android:thumbTint="@color/peony"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_below="@+id/seek_sadness"
+                android:layout_alignParentStart="true"/>
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Melancholy"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_below="@+id/seek_sadness"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- Continue Button -->
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/peony"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
