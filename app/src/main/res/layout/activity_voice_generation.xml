@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".VoiceGenerationActivity">
 
     <!-- Header Title -->
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Generating AI Voice"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Synthesizing voice..."
-        android:textColor="#D1D5DB"
+        android:textColor="@color/gray_600"
         android:textSize="16sp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/progress_container"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_finish"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
         app:layout_constraintTop_toBottomOf="@+id/animation_container">
 
         <!-- Percentage -->
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="0%"
-            android:textColor="#374151"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/progress_bar"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".AccountDetailsActivity">
 
     <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="#1F2937"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Account Details"
-        android:textColor="#1F2937"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
 
@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name"
-                    android:textColor="#9CA3AF"
+                    android:textColor="#374151"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
 
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="#9CA3AF"
+                    android:textColor="#374151"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
 
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Member Since"
-                    android:textColor="#9CA3AF"
+                    android:textColor="#374151"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView

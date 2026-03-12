@@ -44,6 +44,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, NotificationsActivity::class.java))
         }
 
+        // User Name & Profile Icon Click -> Profile
+        findViewById<TextView>(R.id.tv_user_name).setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+        findViewById<android.widget.ImageView>(R.id.iv_profile_header).setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
         // Setup views
         emptyStateLayout = findViewById(R.id.layout_empty_state)
         dashboardContent = findViewById(R.id.scroll_dashboard_content)
@@ -99,6 +107,12 @@ class MainActivity : AppCompatActivity() {
         // "Create New Project" Button in Empty State
         findViewById<android.widget.Button>(R.id.btn_create_first_project).setOnClickListener {
              startActivity(Intent(this, NewProjectActivity::class.java))
+        }
+
+        // Bottom Navigation - History Click
+        findViewById<LinearLayout>(R.id.nav_history).setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+            overridePendingTransition(0, 0)
         }
 
         // Bottom Navigation - Profile Click

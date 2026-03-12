@@ -27,15 +27,19 @@ class PasteYoutubeLinkActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_continue_youtube).setOnClickListener {
             val link = findViewById<EditText>(R.id.et_youtube_link).text.toString()
-            if (link.isNotBlank()) {
-                android.content.Intent(this, UploadProgressActivity::class.java).also {
-                    it.putExtra("VIDEO_URI", link)
-                    startActivity(it)
-                }
-                finish()
-            } else {
-                Toast.makeText(this, "Please enter a valid link", Toast.LENGTH_SHORT).show()
+
+            if (!link.startsWith("https://www.youtube.com") &&
+                !link.startsWith("https://youtu.be")) {
+                Toast.makeText(this, "Invalid YouTube URL", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            Toast.makeText(
+                this,
+                "YouTube download requires server processing",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
     }
 }

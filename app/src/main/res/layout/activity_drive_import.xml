@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".DriveImportActivity">
 
      <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="@color/white"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Google Drive"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -65,13 +65,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="My_Vlog_Draft.mp4"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="16sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Modified Jan 2, 2026"
-                        android:textColor="#D1D5DB"
+                        android:textColor="@color/gray_600"
                         android:textSize="12sp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -98,13 +98,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Interview_Raw.mov"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="16sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Modified Dec 28, 2025"
-                        android:textColor="#D1D5DB"
+                        android:textColor="@color/gray_600"
                         android:textSize="12sp"/>
                 </LinearLayout>
             </LinearLayout>

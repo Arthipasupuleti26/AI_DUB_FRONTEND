@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="@color/background_main"
     tools:context=".MainActivity">
 
     <!-- Content Container (Dashboard) -->
@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Welcome back,"
-                    android:textColor="#D1D5DB"
+                    android:textColor="@color/gray_600"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -45,11 +45,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="User Name"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_primary"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_welcome_label" />
+
+                <ImageView
+                    android:id="@+id/iv_profile_header"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_project_card"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_nav_profile"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_notifications"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
 
                 <ImageView
                     android:id="@+id/iv_notifications"
@@ -129,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Recent Projects"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -168,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Projects"
-            android:textColor="@color/white"
+            android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="32dp"
@@ -179,7 +191,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Manage your dubbed videos"
-            android:textColor="#D1D5DB"
+            android:textColor="@color/gray_600"
             android:textSize="14sp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -203,7 +215,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No videos yet"
-            android:textColor="@color/white"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="24dp"
@@ -217,7 +229,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start by uploading your first Telugu video to dub it into English."
-            android:textColor="#D1D5DB"
+            android:textColor="@color/gray_600"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="8dp"
@@ -235,7 +247,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:backgroundTint="#8B5CF6"
+            android:backgroundTint="@color/peony"
             android:layout_marginTop="32dp"
             android:paddingVertical="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -250,7 +262,7 @@
         android:id="@+id/bottom_nav_container"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#FFFFFF"
+        android:background="@color/card_bg"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -366,7 +378,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_nav_add"
-        app:backgroundTint="#8B5CF6"
+        app:backgroundTint="@color/peony"
         app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

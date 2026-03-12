@@ -12,6 +12,7 @@
     <!-- New Theme Colors -->
     <color name="peony">#F06292</color>
     <color name="peony_dark">#E91E63</color>
+    <color name="peony_light">#FCE7F3</color>
     <color name="pool">#81D4FA</color>
     <color name="pool_dark">#4FC3F7</color>
     <color name="splash_title">#000000</color>
@@ -37,4 +38,14 @@
     <color name="button_continue">#D61E86</color>
     <color name="gray_600">#4B5563</color>
     <color name="button_login_purple">@color/peony</color>
+    <color name="tan">#D2B48C</color>
+    <color name="tan_light">#FFF3E0</color>
+
+    <!-- Semantic Colors (Light) -->
+    <color name="background_main">#E1F5FE</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#4B5563</color>
+    <color name="icon_bg_tint">#F3F4F6</color>
+    <color name="duration_badge_background">#99000000</color>
 </resources>

@@ -23,7 +23,7 @@ class AccountDetailsActivity : AppCompatActivity() {
         }
 
         // Get User Data
-        val sharedPref = getSharedPreferences("MockAuth", MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
         val name = sharedPref.getString("name", "User Name")
         val email = sharedPref.getString("email", "user@example.com")
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".TranslationActivity">
 
     <!-- Header Title -->
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Translating"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
         <!-- Telugu Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             app:cardBackgroundColor="#FFF8E1"
@@ -58,6 +58,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_telugu_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -78,7 +79,7 @@
         <!-- English Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             app:cardBackgroundColor="#F3F0FF"
@@ -101,6 +102,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_english_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -119,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Context-aware translation..."
-        android:textColor="@color/white"
+        android:textColor="@color/gray_600"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/progress_container"
@@ -131,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="75 %"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_status"
         app:layout_constraintEnd_toEndOf="@+id/progress_container" />

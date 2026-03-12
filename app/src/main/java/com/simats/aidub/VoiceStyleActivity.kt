@@ -5,11 +5,15 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.simats.aidub.model.GenericResponse
+import com.simats.aidub.network.ApiClient
+import com.simats.aidub.repository.ProjectRepository
 
 class VoiceStyleActivity : AppCompatActivity() {
 
@@ -35,12 +39,44 @@ class VoiceStyleActivity : AppCompatActivity() {
         setupStyleSelection()
 
         findViewById<Button>(R.id.btn_apply).setOnClickListener {
-            // Navigate to Emotion Intensity
-            val intent = Intent(this, EmotionIntensityActivity::class.java)
-            intent.putExtra("PROJECT_ID", projectId)
-            intent.putExtra("SELECTED_STYLE", selectedStyle)
-            startActivity(intent)
-            finish()
+
+            val repo = ProjectRepository(this)
+            val project = repo.getProject(projectId!!)
+
+            // Save selected style
+            repo.updateSelectedStyle(projectId!!, selectedStyle)
+
+            // ⭐ FIXED BACKEND CALL
+            val englishText = project?.translatedText ?: ""
+
+            ApiClient.apiService.generateVoice(
+                projectId = projectId!!,
+                text = englishText,
+                voice = project?.selectedVoice ?: "Arjun",
+                style = selectedStyle
+            ).enqueue(object : retrofit2.Callback<GenericResponse> {
+                override fun onResponse(
+                    call: retrofit2.Call<GenericResponse>,
+                    response: retrofit2.Response<GenericResponse>
+                ) {
+                    if (response.isSuccessful && response.body()?.success == true) {
+
+                        startActivity(
+                            Intent(this@VoiceStyleActivity, EmotionIntensityActivity::class.java)
+                                .putExtra("PROJECT_ID", projectId)
+                        )
+                        finish()
+                    }
+                }
+
+                override fun onFailure(call: retrofit2.Call<GenericResponse>, t: Throwable) {
+                    Toast.makeText(
+                        this@VoiceStyleActivity,
+                        t.message ?: "Voice generation failed",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
         }
     }
 
@@ -57,18 +93,16 @@ class VoiceStyleActivity : AppCompatActivity() {
 
         fun updateSelection(style: String) {
             selectedStyle = style
-            
-            // Helper to reset all
+
             val cards = listOf(cardProfessional, cardCasual, cardEnergetic, cardCalm)
             val icons = listOf(iconProfessional, iconCasual, iconEnergetic, iconCalm)
-            
+
             cards.forEach { it.setCardBackgroundColor(Color.WHITE) }
-            icons.forEach { 
+            icons.forEach {
                 it.setColorFilter(Color.parseColor("#6B7280"))
                 it.background.setTint(Color.parseColor("#F3F4F6"))
             }
 
-            // Set selected
             val (selectedCard, selectedIcon) = when(style) {
                 "Professional" -> Pair(cardProfessional, iconProfessional)
                 "Casual" -> Pair(cardCasual, iconCasual)
@@ -87,7 +121,6 @@ class VoiceStyleActivity : AppCompatActivity() {
         cardEnergetic.setOnClickListener { updateSelection("Energetic") }
         cardCalm.setOnClickListener { updateSelection("Calm") }
 
-        // Initial
         updateSelection("Professional")
     }
 }

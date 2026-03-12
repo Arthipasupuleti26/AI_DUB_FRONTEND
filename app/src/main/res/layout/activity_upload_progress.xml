@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".UploadProgressActivity">
 
     <LinearLayout
@@ -33,19 +33,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uploading Video..."
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginTop="32dp"/>
 
         <TextView
-            android:id="@+id/tv_filename"
+            android:id="@+id/tv_file_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="my_telugu_vlog.mp4 (45MB)"
-            android:textColor="#D1D5DB"
+            android:text="my_telugu_vlog.mp4"
+            android:textColor="@color/gray_600"
             android:textSize="14sp"
             android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_file_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45 MB"
+            android:textColor="@color/gray_600"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"/>
+
 
         <!-- Progress Section -->
         <LinearLayout
@@ -59,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0%"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>

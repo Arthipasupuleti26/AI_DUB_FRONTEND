@@ -24,11 +24,11 @@ class UploadCompleteActivity : AppCompatActivity() {
         }
 
         // Get video URI from intent
-        videoUri = intent.getStringExtra("VIDEO_URI")
+        val backendVideoPath = intent.getStringExtra("VIDEO_SERVER_PATH")
 
         findViewById<Button>(R.id.btn_continue).setOnClickListener {
             val intent = Intent(this, ProjectDetailsActivity::class.java)
-            intent.putExtra("VIDEO_URI", videoUri)
+            intent.putExtra("VIDEO_SERVER_PATH", backendVideoPath)
             startActivity(intent)
         }
     }

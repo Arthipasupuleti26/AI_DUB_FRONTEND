@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".PrivacyPolicyActivity">
 
     <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="@color/white"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Privacy Policy"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1. Introduction\n\nWelcome to AIDUB. We respect your privacy and are committed to protecting your personal data.\n\n2. Data Collection\n\nWe collect information you provide directly to us, such as when you create an account, upload content, or contact support.\n\n3. Use of Information\n\nWe use the information we collect to operate, conduct, and improve our services.\n\n4. Updates\n\nWe may update this privacy policy from time to time."
-                android:textColor="@color/white"
+                android:textColor="@color/gray_600"
                 android:textSize="16sp"
                 android:lineSpacingExtra="4dp"/>
 

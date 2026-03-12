@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".ExtractAudioActivity">
 
     <!-- Header Title -->
@@ -39,28 +39,28 @@
             android:layout_width="8dp"
             android:layout_height="30dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar2"
             android:layout_width="8dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar3"
             android:layout_width="8dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar4"
             android:layout_width="8dp"
             android:layout_height="90dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar5"
@@ -81,28 +81,28 @@
             android:layout_width="8dp"
             android:layout_height="90dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar8"
             android:layout_width="8dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar9"
             android:layout_width="8dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
         <View
             android:id="@+id/bar10"
             android:layout_width="8dp"
             android:layout_height="30dp"
             android:layout_marginHorizontal="3dp"
-            android:background="@drawable/bg_waveform_bar" />
+            android:background="@drawable/bg_waveform_bar_dark" />
 
     </LinearLayout>
 

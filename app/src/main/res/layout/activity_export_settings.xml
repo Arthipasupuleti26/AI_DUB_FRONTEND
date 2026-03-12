@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1F5FE"
+    tools:context=".ExportSettingsActivity">
+
+    <!-- Soft Gradient Background Elements -->
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/bg_blur_peony"
+        android:alpha="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="-100dp" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/bg_blur_pool"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="-100dp"
+        android:layout_marginStart="-100dp" />
+
+    <!-- Header -->
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/peony"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Export Video"
+        android:textColor="#1F2937"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Resolution Section -->
+    <TextView
+        android:id="@+id/label_resolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resolution"
+        android:textColor="#6B7280"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_resolution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/label_resolution">
+
+        <TextView
+            android:id="@+id/chip_720p"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_option_card"
+            android:gravity="center"
+            android:text="720p"
+            android:textColor="#6B7280"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/chip_1080p"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_option_card_selected"
+            android:gravity="center"
+            android:text="1080p"
+            android:textColor="@color/peony"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="4dp"/>
+
+        <TextView
+            android:id="@+id/chip_4k"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_option_card"
+            android:gravity="center"
+            android:text="4K"
+            android:textColor="#6B7280"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Format Section -->
+    <TextView
+        android:id="@+id/label_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Format"
+        android:textColor="#6B7280"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_resolution"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_format"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/label_format">
+
+        <TextView
+            android:id="@+id/chip_mp4"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_option_card_selected"
+            android:gravity="center"
+            android:text="MP4 (H.264)"
+            android:textColor="@color/peony"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/chip_mov"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_option_card"
+            android:gravity="center"
+            android:text="MOV (ProRes)"
+            android:textColor="#6B7280"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Subtitles Toggle -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_subtitles"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_option_card"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_format">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Burn-in Subtitles"
+            android:textColor="#1F2937"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_subtitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            app:thumbTint="@color/peony"
+            app:trackTint="#E5E7EB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Export Button Area -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_export_video"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/bg_button_purple"
+        android:drawableStart="@drawable/ic_download"
+        android:drawablePadding="12dp"
+        android:paddingStart="24dp"
+        android:text="Export Video"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_meta_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated size: 45 MB • Time remaining: ~2 mins"
+        android:textColor="#9CA3AF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_export_video"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

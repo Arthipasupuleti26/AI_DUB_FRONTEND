@@ -7,17 +7,24 @@
     android:background="@drawable/bg_splash_gradient"
     tools:context=".SplashActivity">
 
+    <!-- Mic Icon -->
     <ImageView
         android:id="@+id/iv_mic"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_mic_gradient"
-        app:layout_constraintBottom_toTopOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <!-- App Title -->
+
+    <!-- Subtitle -->
+
+    <!-- Powered By Text (Bottom) -->
 
     <TextView
         android:id="@+id/tv_title"
@@ -27,25 +34,38 @@
         android:fontFamily="sans-serif-medium"
         android:text="AI Voice\nGenerator"
         android:textAlignment="center"
-        android:textColor="@color/splash_title"
+        android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_mic" />
+        app:layout_constraintTop_toBottomOf="@id/iv_mic" />
 
     <TextView
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="124dp"
         android:text="Emotionally Synchronized Speech"
-        android:textColor="@color/splash_subtitle"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_powered_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Powered By SIMATS"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

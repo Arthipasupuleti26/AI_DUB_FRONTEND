@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".TranscriptionActivity">
 
     <!-- Header Title -->
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Transcribing Telugu"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,40 +52,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="నమస్కారం అండి, ఈ రోజు మనం..."
-                        android:textColor="#1F2937"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
-
-                     <TextView
-                        android:id="@+id/tv_line2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="టెక్నాలజీ గురించి మాట్లాడుకుందాం."
-                        android:textColor="#1F2937"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_line3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="ఇది చాలా ముఖ్యమైన విషయం..."
-                        android:textColor="#1F2937"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
-                    
-                    <!-- Fading space at bottom -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"/>
 
                 </LinearLayout>
             </ScrollView>
@@ -106,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Converting speech to text..."
-        android:textColor="#D1D5DB"
+        android:textColor="@color/gray_600"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_container"
         app:layout_constraintStart_toStartOf="@+id/progress_container" />
@@ -128,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="0%"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/progress_bar"

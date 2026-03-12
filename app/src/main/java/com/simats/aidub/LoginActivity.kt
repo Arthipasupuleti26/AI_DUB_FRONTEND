@@ -2,14 +2,20 @@ package com.simats.aidub
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.simats.aidub.model.LoginResponse
+import com.simats.aidub.network.ApiClient
+import com.simats.aidub.network.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,53 +27,84 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        // Login button -> Home (MainActivity)
-        findViewById<Button>(R.id.btn_login).setOnClickListener {
-            val email = findViewById<android.widget.EditText>(R.id.et_login_email).text.toString()
-            val password = findViewById<android.widget.EditText>(R.id.et_login_password).text.toString()
+        val etEmail = findViewById<EditText>(R.id.et_login_email)
+        val etPassword = findViewById<EditText>(R.id.et_login_password)
+        val btnLogin = findViewById<Button>(R.id.btn_login)
+
+        val apiService = ApiClient.apiService
+
+        btnLogin.setOnClickListener {
+
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                android.widget.Toast.makeText(this, "Please fill in all fields", android.widget.Toast.LENGTH_SHORT).show()
-            } else if (password.length < 6) {
-                android.widget.Toast.makeText(this, "Password must be at least 6 characters", android.widget.Toast.LENGTH_SHORT).show()
-            } else {
-                // Verify credentials against DB (Mock Auth Multi-User)
-                val authDb = getSharedPreferences("MockAuthDB", MODE_PRIVATE)
-                val userData = authDb.getString(email, null)
-
-                if (userData != null) {
-                    val parts = userData.split("|")
-                    if (parts.size == 2 && parts[1] == password) {
-                         // Login Success
-                         val name = parts[0]
-                         
-                         // Save session for MainActivity
-                         val session = getSharedPreferences("MockAuth", MODE_PRIVATE)
-                         with(session.edit()) {
-                             putString("name", name)
-                             putString("email", email)
-                             apply()
-                         }
-
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
-                    } else {
-                         android.widget.Toast.makeText(this, "Invalid email or password", android.widget.Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    android.widget.Toast.makeText(this, "User not found. Please sign up.", android.widget.Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(this, "Email and password required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            val body = mapOf(
+                "email" to email,
+                "password" to password
+            )
+
+            apiService.login(body).enqueue(object : Callback<LoginResponse> {
+
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+
+                        val res = response.body()!!
+                        val user = res.user
+
+                        val session = getSharedPreferences("UserSession", MODE_PRIVATE)
+                        with(session.edit()) {
+                            putBoolean("is_logged_in", true)   // ✅ ADD THIS
+                            putString("user_id", user.id)
+                            putString("name", user.name)
+                            putString("email", user.email)
+                            putString("token", user.token)
+                            putString("session_id", res.session_id)
+                            apply()
+                        }
+
+
+                        Toast.makeText(
+                            this@LoginActivity,
+                            res.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        finish()
+
+                    } else {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Invalid email or password",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Server error: ${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
         }
 
-        // Sign Up link -> CreateAccountActivity
         findViewById<TextView>(R.id.tv_signup_link).setOnClickListener {
             startActivity(Intent(this, CreateAccountActivity::class.java))
             finish()
         }
-        
-        // Forgot password -> Navigate to ResetPasswordActivity
-         findViewById<TextView>(R.id.tv_forgot_password).setOnClickListener {
+
+        findViewById<TextView>(R.id.tv_forgot_password).setOnClickListener {
             startActivity(Intent(this, ResetPasswordActivity::class.java))
         }
     }

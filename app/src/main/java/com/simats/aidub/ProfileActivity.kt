@@ -21,7 +21,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Get User Data
-        val sharedPref = getSharedPreferences("MockAuth", MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
         val name = sharedPref.getString("name", "User Name")
         val email = sharedPref.getString("email", "user@example.com")
 
@@ -32,12 +32,10 @@ class ProfileActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.btn_sign_out).setOnClickListener {
             // Clear Session (but keep DB)
             with(sharedPref.edit()) {
-                remove("name")
-                remove("email")
-                remove("password") // if saved
-                remove("has_projects") // Reset session state
+                clear()
                 apply()
             }
+
             // Go to Login
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -48,13 +46,15 @@ class ProfileActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.nav_home).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             overridePendingTransition(0, 0) // No animation
-            finish()
         }
 
         // Feature Toasts
         val toast = { msg: String -> android.widget.Toast.makeText(this, msg, android.widget.Toast.LENGTH_SHORT).show() }
         
-        findViewById<LinearLayout>(R.id.nav_history).setOnClickListener { toast("History") }
+        findViewById<LinearLayout>(R.id.nav_history).setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
         findViewById<LinearLayout>(R.id.nav_settings).setOnClickListener {
              startActivity(Intent(this, SettingsActivity::class.java))
              overridePendingTransition(0, 0)
@@ -77,12 +77,5 @@ class ProfileActivity : AppCompatActivity() {
              startActivity(Intent(this, NewProjectActivity::class.java))
         }
 
-        // Handle Back Press explicitly
-        onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
-                finish()
-            }
-        })
     }
 }

@@ -41,16 +41,16 @@
   <!-- Sparkle (Center) -->
   <path
       android:pathData="M130,115c3,12 8,15 20,18c-12,3 -17,8 -20,20c-3,-12 -8,-17 -20,-20c12,-3 17,-8 20,-18z"
-      android:strokeColor="#A855F7"
+      android:strokeColor="@color/peony"
       android:strokeWidth="2.5"
       android:fillColor="#00000000"/>
       
   <!-- Small Sparkles -->
   <path
       android:pathData="M148,118l4,0l0,4l-4,0z"
-      android:fillColor="#A855F7"/>
+      android:fillColor="@color/peony"/>
    <path
       android:pathData="M118,145l4,0l0,4l-4,0z"
-      android:fillColor="#A855F7"/>
+      android:fillColor="@color/peony"/>
 
 </vector>

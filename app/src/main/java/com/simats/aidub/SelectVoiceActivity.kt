@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.simats.aidub.model.GenericResponse
+import com.simats.aidub.network.ApiClient
 import com.simats.aidub.repository.ProjectRepository
 
 class SelectVoiceActivity : AppCompatActivity() {
@@ -40,13 +42,64 @@ class SelectVoiceActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btn_continue).setOnClickListener {
-            // Navigate to Voice Style
-            val intent = Intent(this, VoiceStyleActivity::class.java)
-            intent.putExtra("PROJECT_ID", projectId)
-            intent.putExtra("SELECTED_VOICE", selectedVoice)
-            startActivity(intent)
-            finish()
+
+            val project = projectRepository.getProject(projectId!!)
+            val englishText = project?.translatedText ?: ""
+
+            if (englishText.isEmpty()) {
+                Toast.makeText(this, "No translated text found", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Save selected voice locally
+            projectRepository.updateSelectedVoice(projectId!!, selectedVoice)
+
+            Toast.makeText(this, "Generating AI Voice...", Toast.LENGTH_SHORT).show()
+
+            ApiClient.apiService.generateVoice(
+                projectId = projectId!!,
+                text = englishText,
+                voice = selectedVoice,
+                style = "Professional" // default style for now
+            ).enqueue(object : retrofit2.Callback<GenericResponse> {
+
+                override fun onResponse(
+                    call: retrofit2.Call<GenericResponse>,
+                    response: retrofit2.Response<GenericResponse>
+                ) {
+                    if (response.isSuccessful && response.body()?.success == true) {
+
+                        Toast.makeText(
+                            this@SelectVoiceActivity,
+                            "Voice Generated 🎉",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                        // Move to next screen
+                        startActivity(
+                            Intent(this@SelectVoiceActivity, VoiceStyleActivity::class.java)
+                                .putExtra("PROJECT_ID", projectId)
+                        )
+
+                    } else {
+                        Toast.makeText(
+                            this@SelectVoiceActivity,
+                            "Voice generation failed",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: retrofit2.Call<GenericResponse>, t: Throwable) {
+                    Toast.makeText(
+                        this@SelectVoiceActivity,
+                        "Server error: " + t.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
         }
+
     }
 
     private fun setupVoiceSelection() {

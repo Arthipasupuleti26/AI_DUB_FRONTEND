@@ -5,7 +5,7 @@
     android:id="@+id/profile_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="@color/background_main"
     tools:context=".ProfileActivity">
 
     <!-- Header -->
@@ -16,7 +16,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Profile"
-        android:textColor="@color/white"
+        android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="User Name"
-        android:textColor="@color/white"
+        android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="user@example.com"
-        android:textColor="#D1D5DB"
+        android:textColor="@color/gray_600"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
         android:paddingHorizontal="16dp"
         android:paddingVertical="6dp"
         android:text="Pro Member"
-        android:textColor="#8B5CF6"
+        android:textColor="@color/peony"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +85,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_project_card"
+        android:backgroundTint="@color/card_bg"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@+id/tv_pro_member_badge">
@@ -102,6 +103,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_icon_container"
+                android:backgroundTint="@color/icon_bg_tint"
                 android:padding="8dp"
                 android:src="@drawable/ic_menu_account" />
             
@@ -111,13 +113,14 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="Account Details"
-                android:textColor="#374151"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
             
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_chevron_right" />
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/gray_600" />
         </LinearLayout>
 
         <!-- Subscription Plan -->
@@ -133,6 +136,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_icon_container"
+                android:backgroundTint="@color/icon_bg_tint"
                 android:padding="8dp"
                 android:src="@drawable/ic_menu_subscription" />
             
@@ -142,13 +146,14 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="Subscription Plan"
-                android:textColor="#374151"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
             
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_chevron_right" />
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/gray_600" />
         </LinearLayout>
 
         <!-- App Settings -->
@@ -159,11 +164,12 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingVertical="12dp">
-            
+
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_icon_container"
+                android:backgroundTint="@color/icon_bg_tint"
                 android:padding="8dp"
                 android:src="@drawable/ic_nav_settings"
                 app:tint="@color/peony" />
@@ -174,13 +180,14 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="App Settings"
-                android:textColor="#374151"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
             
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_chevron_right" />
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/gray_600" />
         </LinearLayout>
 
         <!-- Help & Support -->
@@ -196,8 +203,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_icon_container"
+                android:backgroundTint="@color/icon_bg_tint"
                 android:padding="8dp"
-                android:src="@drawable/ic_menu_help" />
+                android:src="@drawable/ic_menu_help"
+                app:tint="@color/peony" />
             
             <TextView
                 android:layout_width="0dp"
@@ -205,13 +214,14 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="Help &amp; Support"
-                android:textColor="#374151"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
             
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_chevron_right" />
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/gray_600" />
         </LinearLayout>
     </LinearLayout>
 
@@ -231,7 +241,8 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_sign_out" />
+            android:src="@drawable/ic_sign_out"
+            app:tint="#EF4444" />
             
         <TextView
             android:layout_width="wrap_content"
@@ -248,7 +259,7 @@
         android:id="@+id/bottom_nav_container"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#FFFFFF"
+        android:background="@color/card_bg"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -356,17 +367,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- FAB Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_nav_add"
-        app:backgroundTint="#8B5CF6"
-        app:tint="@color/white"
+        app:backgroundTint="@color/peony"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

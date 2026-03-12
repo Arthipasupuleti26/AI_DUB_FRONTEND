@@ -63,7 +63,30 @@ class ProjectRepository(context: Context) {
             saveProjects(projects)
         }
     }
-    
+
+    fun deleteAllProjects() {
+        sharedPreferences.edit().remove(projectsKey).apply()
+    }
+
+    fun updateAudioPath(projectId: String, audioPath: String) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == projectId }
+
+        if (index != -1) {
+            projects[index] = projects[index].copy(audioPath = audioPath)
+            saveProjects(projects)
+        }
+    }
+
+
+
+
+    fun getTranscribedText(projectId: String): String {
+        val project = getProject(projectId)
+        return project?.transcribedText ?: ""
+    }
+
+
     /**
      * Update the processing progress of a project.
      */
@@ -95,6 +118,85 @@ class ProjectRepository(context: Context) {
         }
     }
     
+    fun updateProject(updatedProject: Project) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == updatedProject.id }
+        if (index != -1) {
+            projects[index] = updatedProject
+            saveProjects(projects)
+        }
+    }
+
+    fun updateTranscribedText(id: String, text: String) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(transcribedText = text)
+            saveProjects(projects)
+        }
+    }
+
+    fun updateTranslatedText(id: String, text: String) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(translatedText = text)
+            saveProjects(projects)
+        }
+    }
+
+    fun updateDetectedEmotion(id: String, emotion: String) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(detectedEmotion = emotion)
+            saveProjects(projects)
+        }
+    }
+
+    fun updateSelectedVoice(id: String, voice: String) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(selectedVoice = voice)
+            saveProjects(projects)
+        }
+    }
+
+    fun updateSelectedStyle(id: String, style: String) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(selectedStyle = style)
+            saveProjects(projects)
+        }
+    }
+
+    fun updateEmotionIntensity(id: String, happiness: Int, excitement: Int, sadness: Int) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(
+                happiness = happiness,
+                excitement = excitement,
+                sadness = sadness
+            )
+            saveProjects(projects)
+        }
+    }
+
+    fun updateVoiceTuning(id: String, speed: Float, pitch: Float) {
+        val projects = getRecentProjects().toMutableList()
+        val index = projects.indexOfFirst { it.id == id }
+        if (index != -1) {
+            projects[index] = projects[index].copy(
+                speed = speed,
+                pitch = pitch
+            )
+            saveProjects(projects)
+        }
+    }
+
     /**
      * Check if there are any projects.
      */

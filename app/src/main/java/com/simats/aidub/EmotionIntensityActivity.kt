@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.simats.aidub.network.ApiClient
 import com.simats.aidub.repository.ProjectRepository
 
 class EmotionIntensityActivity : AppCompatActivity() {
@@ -38,13 +39,43 @@ class EmotionIntensityActivity : AppCompatActivity() {
         setupSeekBars()
 
         findViewById<Button>(R.id.btn_continue).setOnClickListener {
-            // Navigate to Voice Controls
-            val intent = Intent(this, VoiceControlsActivity::class.java)
-            intent.putExtra("PROJECT_ID", projectId)
-            // Pass forward previous selections if needed, for now ProjectID is key
-            startActivity(intent)
-            finish()
+
+            val happiness = findViewById<SeekBar>(R.id.seek_happiness).progress
+            val excitement = findViewById<SeekBar>(R.id.seek_excitement).progress
+            val sadness = findViewById<SeekBar>(R.id.seek_sadness).progress
+
+            projectRepository.updateEmotionIntensity(projectId!!, happiness, excitement, sadness)
+
+            // 🔥 SEND TO BACKEND
+            ApiClient.apiService.saveEmotion(
+                projectId!!,
+                happiness,
+                excitement,
+                sadness
+            ).enqueue(object : retrofit2.Callback<com.simats.aidub.model.GenericResponse> {
+
+                override fun onResponse(
+                    call: retrofit2.Call<com.simats.aidub.model.GenericResponse>,
+                    response: retrofit2.Response<com.simats.aidub.model.GenericResponse>
+                ) {
+                    if(response.isSuccessful && response.body()?.success == true){
+                        AppNotifier.notifySuccess(this@EmotionIntensityActivity,"Emotion tuning saved 🎚")
+
+                        startActivity(
+                            Intent(this@EmotionIntensityActivity, VoiceControlsActivity::class.java)
+                                .putExtra("PROJECT_ID", projectId)
+                        )
+                    } else {
+                        Toast.makeText(this@EmotionIntensityActivity,"Failed to save emotion",Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onFailure(call: retrofit2.Call<com.simats.aidub.model.GenericResponse>, t: Throwable) {
+                    Toast.makeText(this@EmotionIntensityActivity,t.message,Toast.LENGTH_LONG).show()
+                }
+            })
         }
+
     }
 
     private fun setupSeekBars() {

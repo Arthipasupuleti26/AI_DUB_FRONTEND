@@ -13,7 +13,7 @@
         <scale android:scaleWidth="100%">
             <shape>
                 <corners android:radius="6dp" />
-                <solid android:color="#A855F7" /> <!-- Purple-500 -->
+                <solid android:color="@color/peony" /> <!-- Purple-500 -->
             </shape>
         </scale>
     </item>

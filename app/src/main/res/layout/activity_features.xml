@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".FeaturesActivity">
 
     <TextView
@@ -221,7 +221,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/button_continue"
+        android:backgroundTint="@color/peony"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:paddingVertical="12dp"

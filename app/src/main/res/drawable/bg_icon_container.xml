@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="16dp"/>
-    <solid android:color="#F3E8FF"/> <!-- Light purple background matching image -->
+    <solid android:color="@color/peony_light"/> <!-- Light pink background -->
 </shape>

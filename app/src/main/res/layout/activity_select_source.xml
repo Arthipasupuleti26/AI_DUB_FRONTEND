@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".SelectSourceActivity">
 
     <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="@color/white"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Select Source"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="24dp"
                 android:layout_marginBottom="16dp">
 
@@ -62,6 +62,7 @@
                     android:background="@drawable/bg_icon_circle_aesthetic"
                     android:padding="12dp"
                     android:src="@drawable/ic_gallery_purple"
+                    app:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Gallery"
-                    android:textColor="#1F2937"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/iv_gallery"
@@ -86,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Choose from your device"
-                    android:textColor="#6B7280"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp"
                     app:layout_constraintStart_toEndOf="@+id/iv_gallery"
@@ -101,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="24dp"
                 android:layout_marginBottom="16dp">
 
@@ -112,6 +113,7 @@
                     android:background="@drawable/bg_icon_circle_aesthetic"
                     android:padding="12dp"
                     android:src="@drawable/ic_camera_purple"
+                    app:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -122,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Camera"
-                    android:textColor="#1F2937"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/iv_camera"
@@ -136,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Record a new video"
-                    android:textColor="#6B7280"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp"
                     app:layout_constraintStart_toEndOf="@+id/iv_camera"
@@ -151,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="24dp"
                 android:layout_marginBottom="16dp">
 
@@ -162,6 +164,7 @@
                     android:background="@drawable/bg_icon_circle_aesthetic"
                     android:padding="12dp"
                     android:src="@drawable/ic_drive_purple"
+                    app:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -172,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Google Drive"
-                    android:textColor="#1F2937"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/iv_drive"
@@ -186,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="Import from cloud"
-                    android:textColor="#6B7280"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp"
                     app:layout_constraintStart_toEndOf="@+id/iv_drive"

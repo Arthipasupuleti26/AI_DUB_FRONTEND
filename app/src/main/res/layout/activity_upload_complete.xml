@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".UploadCompleteActivity">
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Upload Complete!"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="32dp"/>
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Your video has been uploaded successfully.\nLet's set up the dubbing details."
-            android:textColor="#D1D5DB"
+            android:textColor="@color/gray_600"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="12dp"

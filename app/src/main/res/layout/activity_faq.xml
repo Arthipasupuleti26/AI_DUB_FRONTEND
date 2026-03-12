@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".FaqActivity">
 
     <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="@color/white"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="FAQ"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -50,14 +50,14 @@
                 android:layout_height="wrap_content"
                 android:text="Q: How do I dub a video?"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/peony"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="A: Simply upload your video from the home screen, select the target language, and click 'Generate'."
-                android:textColor="#D1D5DB"
+                android:textColor="@color/gray_600"
                 android:textSize="14sp"
                 android:layout_marginBottom="24dp"/>
 
@@ -66,14 +66,14 @@
                 android:layout_height="wrap_content"
                 android:text="Q: Is it free to use?"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/peony"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="A: We offer a free tier with limited minutes. You can upgrade to Pro for more features."
-                android:textColor="#D1D5DB"
+                android:textColor="@color/gray_600"
                 android:textSize="14sp"
                 android:layout_marginBottom="24dp"/>
 
@@ -82,14 +82,14 @@
                 android:layout_height="wrap_content"
                 android:text="Q: What formats are supported?"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/peony"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="A: We support MP4, AVI, and MOV formats currently."
-                android:textColor="#D1D5DB"
+                android:textColor="@color/gray_600"
                 android:textSize="14sp"
                 android:layout_marginBottom="24dp"/>
 

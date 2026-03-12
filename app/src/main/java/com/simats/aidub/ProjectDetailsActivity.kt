@@ -37,14 +37,20 @@ class ProjectDetailsActivity : AppCompatActivity() {
         projectRepository = ProjectRepository(this)
 
         // Get video URI from intent
-        videoUri = intent.getStringExtra("VIDEO_URI")
+        videoUri = intent.getStringExtra("VIDEO_SERVER_PATH")
         
         // Setup VideoView
         val videoView = findViewById<VideoView>(R.id.video_view)
         if (videoUri != null) {
-            val uri = Uri.parse(videoUri)
+            val uri =
+                if (videoUri!!.startsWith("http"))
+                    Uri.parse(videoUri)
+                else
+                    Uri.parse("https://1j7cp4fh-80.inc1.devtunnels.ms/ai_dub/$videoUri")
+
             videoView.setVideoURI(uri)
-            
+
+
             // Add media controller for play/pause controls
             val mediaController = MediaController(this)
             mediaController.setAnchorView(videoView)
@@ -111,6 +117,7 @@ class ProjectDetailsActivity : AppCompatActivity() {
         // Navigate to Audio Extraction screen
         val intent = Intent(this, ExtractAudioActivity::class.java)
         intent.putExtra("VIDEO_URI", videoUri)
+        intent.putExtra("VIDEO_SERVER_PATH", videoUri)
         intent.putExtra("PROJECT_ID", project.id)
         startActivity(intent)
         finish()

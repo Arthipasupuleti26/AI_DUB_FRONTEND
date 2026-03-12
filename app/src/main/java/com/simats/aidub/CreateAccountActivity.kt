@@ -2,14 +2,23 @@ package com.simats.aidub
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.simats.aidub.model.RegisterResponse
+import com.simats.aidub.network.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CreateAccountActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,49 +30,87 @@ class CreateAccountActivity : AppCompatActivity() {
             insets
         }
 
-        // Sign Up button -> Navigate to Home (MainActivity)
         findViewById<Button>(R.id.btn_sign_up).setOnClickListener {
-            val name = findViewById<android.widget.EditText>(R.id.et_name).text.toString()
-            val email = findViewById<android.widget.EditText>(R.id.et_email).text.toString()
-            val password = findViewById<android.widget.EditText>(R.id.et_password).text.toString()
 
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                android.widget.Toast.makeText(this, "Please fill in all fields", android.widget.Toast.LENGTH_SHORT).show()
-            } else if (password.length < 6) {
-                android.widget.Toast.makeText(this, "Password must be at least 6 characters", android.widget.Toast.LENGTH_SHORT).show()
-            } else {
-                // Save credentials (Mock Auth)
-                // Check for duplicate user (Mock Auth Multi-User)
-                val authDb = getSharedPreferences("MockAuthDB", MODE_PRIVATE)
-                if (authDb.contains(email)) {
-                    android.widget.Toast.makeText(this, "Account with this email already exists", android.widget.Toast.LENGTH_SHORT).show()
-                } else {
-                    // Save to DB (email -> name|password)
-                    with(authDb.edit()) {
-                        putString(email, "$name|$password")
-                        apply()
-                    }
+            val name = findViewById<EditText>(R.id.et_name).text.toString().trim()
+            val email = findViewById<EditText>(R.id.et_email).text.toString().trim()
+            val password = findViewById<EditText>(R.id.et_password).text.toString()
 
-                    // Save session (current user)
-                    val session = getSharedPreferences("MockAuth", MODE_PRIVATE)
-                    with (session.edit()) {
-                        putString("name", name)
-                        putString("email", email)
-                        apply()
-                    }
-                    
-                    android.widget.Toast.makeText(this, "Account Created", android.widget.Toast.LENGTH_SHORT).show()
-
-                    // User requested Sign Up to go to Login page
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
-                }
+            // 🔹 Name validation (letters only)
+            if (!name.matches(Regex("^[a-zA-Z ]+$"))) {
+                Toast.makeText(this, "Name should contain only letters", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            // 🔹 Email validation
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Enter a valid email address", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // 🔹 Password validation
+            val passwordRegex =
+                Regex("^(?=.*[0-9])(?=.*[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]).{8,}$")
+
+            if (!passwordRegex.matches(password)) {
+                Toast.makeText(
+                    this,
+                    "Password must be 8+ chars with 1 number & 1 symbol",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
+            }
+
+            val body = mapOf(
+                "name" to name,
+                "email" to email,
+                "password" to password
+            )
+
+            ApiClient.apiService.register(body)
+                .enqueue(object : Callback<RegisterResponse> {
+
+                    override fun onResponse(
+                        call: Call<RegisterResponse>,
+                        response: Response<RegisterResponse>
+                    ) {
+                        if (response.isSuccessful && response.body()?.status == "success") {
+
+                            Toast.makeText(
+                                this@CreateAccountActivity,
+                                "Registered Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            startActivity(
+                                Intent(
+                                    this@CreateAccountActivity,
+                                    LoginActivity::class.java
+                                )
+                            )
+                            finish()
+
+                        } else {
+                            Toast.makeText(
+                                this@CreateAccountActivity,
+                                response.body()?.message ?: "Registration failed",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                        Toast.makeText(
+                            this@CreateAccountActivity,
+                            "Error: ${t.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
         }
 
-        // Log in text -> Navigate to LoginActivity
         findViewById<TextView>(R.id.tv_login_link).setOnClickListener {
-             startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }

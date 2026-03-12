@@ -18,6 +18,11 @@ import androidx.lifecycle.lifecycleScope
 import com.simats.aidub.repository.ProjectRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.simats.aidub.network.ApiClient
+import com.simats.aidub.model.GenericResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class VoiceGenerationActivity : AppCompatActivity() {
 
@@ -25,13 +30,6 @@ class VoiceGenerationActivity : AppCompatActivity() {
     private var projectId: String? = null
     private var startProgress: Int = 0
 
-    private val statusMessages = listOf(
-        "Analyzing text emotion...",
-        "Selecting voice profile...",
-        "Synthesizing speech...",
-        "Adjusting pitch and tone...",
-        "Mixing final audio..."
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,58 +77,93 @@ class VoiceGenerationActivity : AppCompatActivity() {
     }
 
     private fun simulateGeneration() {
+
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
         val tvPercentage = findViewById<TextView>(R.id.tv_percentage)
         val tvStatus = findViewById<TextView>(R.id.tv_status)
 
-        // Set initial progress if resuming
-        progressBar.progress = startProgress
-        tvPercentage.text = "$startProgress%"
+        val project = projectId?.let { projectRepository.getProject(it) }
+        val voice = project?.selectedVoice ?: "Arjun"
+        val style = project?.selectedStyle ?: "Professional"
+        val text = project?.translatedText ?: ""
 
-        lifecycleScope.launch {
-            for (i in startProgress..100) {
-                progressBar.progress = i
-                tvPercentage.text = "$i%"
+        if(text.isEmpty()){
+            Toast.makeText(this,"No translated text found!",Toast.LENGTH_LONG).show()
+            finish()
+            return
+        }
 
-                // Update status message
-                val statusIndex = when {
-                    i < 20 -> 0
-                    i < 40 -> 1
-                    i < 70 -> 2
-                    i < 90 -> 3
-                    else -> 4
+        tvStatus.text = "Connecting to AI voice engine..."
+        progressBar.progress = 10
+        tvPercentage.text = "10%"
+
+        // 🔥 REAL BACKEND CALL
+        ApiClient.apiService.generateVoice(
+            projectId = projectId!!,
+            text = text,
+            voice = voice,
+            style = style
+        ).enqueue(object : Callback<GenericResponse> {
+
+            override fun onResponse(call: Call<GenericResponse>, response: Response<GenericResponse>) {
+
+                if(response.isSuccessful && response.body()?.success == true){
+                    AppNotifier.notifySuccess(this@VoiceGenerationActivity,"AI voice generated 🔊")
+
+                    // Fake smooth finishing animation (backend already finished)
+                    lifecycleScope.launch {
+                        val messages = listOf(
+                            "Synthesizing speech...",
+                            "Applying emotion tuning...",
+                            "Finalizing audio...",
+                            "Almost done..."
+                        )
+
+                        var progress = 20
+                        for (msg in messages) {
+                            tvStatus.text = msg
+                            val target = progress + 20
+
+                            while (progress < target) {
+                                progress += 2
+                                progressBar.progress = progress
+                                tvPercentage.text = "$progress%"
+                                delay(80)
+                            }
+                        }
+
+
+                        progressBar.progress = 100
+                        tvPercentage.text = "100%"
+                        tvStatus.text = "Voice generation complete!"
+
+                        delay(500)
+                        onGenerationComplete()
+                    }
+
+                }else{
+                    Toast.makeText(this@VoiceGenerationActivity,"Voice generation failed",Toast.LENGTH_LONG).show()
+                    finish()
                 }
-                tvStatus.text = statusMessages[statusIndex]
-
-                // Save progress periodically
-                if (i % 10 == 0 && projectId != null) {
-                    projectRepository.updateProjectProgress(projectId!!, "generating_voice", i)
-                }
-
-                val delayTime = (50..100).random().toLong()
-                delay(delayTime)
             }
 
-            // Generation complete
-            delay(500)
-            onGenerationComplete()
-        }
+            override fun onFailure(call: Call<GenericResponse>, t: Throwable) {
+                Toast.makeText(this@VoiceGenerationActivity,t.message,Toast.LENGTH_LONG).show()
+                finish()
+            }
+        })
     }
+
 
     private fun onGenerationComplete() {
         Toast.makeText(this, "Voice generation complete!", Toast.LENGTH_SHORT).show()
-        
-        // Show Next Button
-        val btnNext = findViewById<Button>(R.id.btn_next)
-        btnNext.visibility = View.VISIBLE
-        btnNext.setOnClickListener {
-             // Navigate to Select Voice
-             val intent = Intent(this@VoiceGenerationActivity, SelectVoiceActivity::class.java)
-             intent.putExtra("PROJECT_ID", projectId)
-             startActivity(intent)
-             finish()
-        }
+
+        val intent = Intent(this, VoicePreviewActivity::class.java)
+        intent.putExtra("PROJECT_ID", projectId)
+        startActivity(intent)
+        finish()
     }
+
 
     override fun onBackPressed() {
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)

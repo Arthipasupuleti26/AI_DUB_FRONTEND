@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="@color/background_main"
     tools:context=".SettingsActivity">
 
     <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="#1F2937"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Settings"
-        android:textColor="@color/white"
+        android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_container"
         app:layout_constraintTop_toBottomOf="@+id/tv_header">
 
         <LinearLayout
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Preferences"
-                android:textColor="@color/white"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/card_bg"
                 android:orientation="vertical"
                 android:padding="8dp">
 
@@ -77,10 +77,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#F3F4F6"
+                        android:backgroundTint="@color/icon_bg_tint"
                         android:padding="8dp"
                         android:src="@drawable/ic_feature_globe"
-                        app:tint="#374151" />
+                        app:tint="@color/text_primary" />
                     
                     <TextView
                         android:layout_width="0dp"
@@ -88,7 +88,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="App Language"
-                        android:textColor="#374151"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
                      <TextView
@@ -118,10 +118,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#F3F4F6"
+                        android:backgroundTint="@color/icon_bg_tint"
                         android:padding="8dp"
                         android:src="@drawable/ic_moon"
-                        app:tint="#374151" />
+                        app:tint="@color/text_primary" />
                     
                     <TextView
                         android:layout_width="0dp"
@@ -129,7 +129,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Dark Mode"
-                        android:textColor="#374151"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -153,10 +153,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#F3F4F6"
+                        android:backgroundTint="@color/icon_bg_tint"
                         android:padding="8dp"
                         android:src="@drawable/ic_notification"
-                        app:tint="#374151" />
+                        app:tint="@color/text_primary" />
                     
                     <TextView
                         android:layout_width="0dp"
@@ -164,7 +164,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Push Notifications"
-                        android:textColor="#374151"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Privacy &amp; Security"
-                android:textColor="@color/white"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginTop="32dp"
@@ -192,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/card_bg"
                 android:orientation="vertical"
                 android:padding="8dp">
 
@@ -209,10 +209,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#F3F4F6"
+                        android:backgroundTint="@color/icon_bg_tint"
                         android:padding="8dp"
                         android:src="@drawable/ic_shield"
-                        app:tint="#374151" />
+                        app:tint="@color/text_primary" />
                     
                     <TextView
                         android:layout_width="0dp"
@@ -220,7 +220,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Privacy Policy"
-                        android:textColor="#374151"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
                     
                     <ImageView
@@ -243,10 +243,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#F3F4F6"
+                        android:backgroundTint="@color/icon_bg_tint"
                         android:padding="8dp"
                         android:src="@drawable/ic_shield"
-                        app:tint="#374151" />
+                        app:tint="@color/text_primary" />
                     
                     <TextView
                         android:layout_width="0dp"
@@ -254,7 +254,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="16dp"
                         android:text="Terms of Service"
-                        android:textColor="#374151"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
 
                      <ImageView
@@ -269,12 +269,138 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Version 1.0.2 (Build 452)"
-                android:textColor="#9CA3AF"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 android:gravity="center"
                 android:layout_marginTop="32dp"/>
 
         </LinearLayout>
     </ScrollView>
+
+    <!-- Bottom Navigation Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_nav_container"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/card_bg"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <!-- Home -->
+            <LinearLayout
+                android:id="@+id/nav_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_nav_home"
+                    app:tint="@color/gray_600" />
+                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_600"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- History -->
+            <LinearLayout
+                android:id="@+id/nav_history"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                 <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_nav_history"
+                    app:tint="@color/gray_600" />
+                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="History"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_600"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Create (FAB placeholder) -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            </FrameLayout>
+
+            <!-- Profile -->
+            <LinearLayout
+                android:id="@+id/nav_profile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                 <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_nav_profile"
+                    app:tint="@color/gray_600" />
+                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_600"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Settings -->
+            <LinearLayout
+                android:id="@+id/nav_settings"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                 <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_nav_settings"
+                    app:tint="@color/peony" />
+                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textSize="10sp"
+                    android:textColor="@color/peony"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- FAB Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/ic_nav_add"
+        app:backgroundTint="@color/peony"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="#E1F5FE"
     tools:context=".HelpSupportActivity">
 
     <!-- Header -->
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_arrow_back"
-        app:tint="#1F2937"
+        app:tint="@color/peony"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +52,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
                 
@@ -77,7 +77,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
                 
@@ -102,7 +102,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:background="@drawable/bg_project_card"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/peony"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
                 

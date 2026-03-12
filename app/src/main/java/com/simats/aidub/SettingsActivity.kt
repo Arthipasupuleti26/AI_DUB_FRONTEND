@@ -2,6 +2,7 @@ package com.simats.aidub
 
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -49,13 +50,44 @@ class SettingsActivity : AppCompatActivity() {
         val isNotifEnabled = sharedPref.getBoolean("notifications", true)
         notifSwitch.isChecked = isNotifEnabled
 
+        val notificationHelper = NotificationHelper(this)
+
+        val requestPermissionLauncher = registerForActivityResult(
+            androidx.activity.result.contract.ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                notificationHelper.showNotification("Notifications Enabled", "You will now receive updates about your projects.")
+            } else {
+                notifSwitch.isChecked = false
+                with(sharedPref.edit()) {
+                    putBoolean("notifications", false)
+                    apply()
+                }
+                android.widget.Toast.makeText(this, "Permission Denied", android.widget.Toast.LENGTH_SHORT).show()
+            }
+        }
+
         notifSwitch.setOnCheckedChangeListener { _, isChecked ->
              with(sharedPref.edit()) {
                 putBoolean("notifications", isChecked)
                 apply()
             }
-             val msg = if (isChecked) "Notifications Enabled" else "Notifications Disabled"
-             android.widget.Toast.makeText(this, msg, android.widget.Toast.LENGTH_SHORT).show()
+            
+            if (isChecked) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    if (androidx.core.content.ContextCompat.checkSelfPermission(
+                            this, android.Manifest.permission.POST_NOTIFICATIONS
+                        ) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                        requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                    } else {
+                        notificationHelper.showNotification("Notifications Enabled", "You will now receive updates about your projects.")
+                    }
+                } else {
+                    notificationHelper.showNotification("Notifications Enabled", "You will now receive updates about your projects.")
+                }
+            } else {
+                android.widget.Toast.makeText(this, "Notifications Disabled", android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Privacy Policy
@@ -68,9 +100,28 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(android.content.Intent(this, TermsOfServiceActivity::class.java))
         }
 
-        // App Language
-        findViewById<android.widget.LinearLayout>(R.id.btn_app_language).setOnClickListener {
-            startActivity(android.content.Intent(this, LanguageActivity::class.java))
+        // Create Account navigation is usually triggered by buttons, but for completeness
+        // we'll leave it as is for now.
+
+        // Bottom Navigation
+        findViewById<LinearLayout>(R.id.nav_home).setOnClickListener {
+            startActivity(android.content.Intent(this, MainActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
+
+        findViewById<LinearLayout>(R.id.nav_profile).setOnClickListener {
+            startActivity(android.content.Intent(this, ProfileActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
+
+        findViewById<LinearLayout>(R.id.nav_history).setOnClickListener {
+            startActivity(android.content.Intent(this, HistoryActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
+        
+        // FAB Click
+        findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab_add).setOnClickListener {
+             startActivity(android.content.Intent(this, NewProjectActivity::class.java))
         }
     }
 }
